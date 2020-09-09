@@ -11,6 +11,7 @@ public class LinkedList {
     }
     public int getLength(){
         ListNode ptr=head;
+        length=0;
         while (ptr!=null){
             ptr=ptr.getNext();
             length++;}
@@ -89,17 +90,23 @@ public class LinkedList {
         }
     }
     void removeAtPosition(int position){
-        if(head==null)
-            System.out.println("Linked List is empty");
-        else {
-            if(head.getNext()==null)
-                head=null;
+        int len=getLength();
+        System.out.println(len);
+        if(position<0||position>=len)
+            System.out.println("Incorrect position specified");
+        else{
+            if(head==null)
+                System.out.println("No elements in Linked List");
+            else if(position==0)
+                head=head.getNext();
             else {
-            ListNode ptr=head;
-            for(int i=0;i<position-1;i++)
-                ptr=ptr.getNext();
-            ptr.setNext(ptr.getNext().getNext());
-        }}
+                ListNode ptr=head.getNext();
+                for(int i=1;i<position-1;i++)
+                    ptr=ptr.getNext();
+                ptr.setNext(ptr.getNext().getNext());
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -116,6 +123,10 @@ public class LinkedList {
         obj.insertAtPosition(999, 4);
         obj.display();
         obj.removeAtPosition(2);
+        obj.display();
+        obj.removeAtPosition(0);
+        obj.display();
+        obj.removeAtPosition(3);
         obj.display();
     }
 }
