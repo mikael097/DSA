@@ -79,6 +79,8 @@ public class LinkedList {
     void removeAtEnd(){
         if(head==null)
             System.out.println("No elements in Linked List");
+        else if(head.getNext()==null)
+            head=null;
         else{
             ListNode ptr=head,prev=head;
             while (ptr.getNext()!=null){
