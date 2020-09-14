@@ -6,7 +6,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     @Override
     public void insertAtBegin(T data) {
-        ++size;
+
         if(root==null){
             root=new NodeList<>();
             root.setData(data);
@@ -22,7 +22,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     @Override
     public void insertAtEnd(T data) {
-        ++size;
+
         if(root==null){
             root=new NodeList<>();
             root.setData(data);
@@ -41,10 +41,12 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     @Override
     public void insertAtPosition(T data,int position) {
-        if(position<0||position>size)
+        int length=getSize();
+        System.out.println(length+" "+position);
+        if(position<0||position>length)
             System.out.println("[-]Incorrect Position");
         else {
-            if(size==0){
+            if(length==0){
                 root=new NodeList<>();
                 root.setData(data);
                 root.setNext(null);
@@ -61,12 +63,26 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                     ptr=ptr.getNext();
                 NodeList<T> temp=new NodeList<>();
                 temp.setData(data);
-                temp.setNext(ptr.getNext().getNext());
+                temp.setNext(ptr.getNext());
                 ptr.setNext(temp);
             }
-            ++size;
+
         }
 
+    }
+
+    @Override
+    public void display() {
+        NodeList<T> ptr=getRoot();
+        while (ptr!=null){
+            System.out.print(ptr.getData()+"->");
+            ptr=ptr.getNext();
+        }
+    }
+
+    @Override
+    public NodeList<T> getRoot() {
+        return root;
     }
 
     @Override
@@ -74,10 +90,8 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         if(root==null){
             System.out.println("Linked List is empty");
         }
-        else {
+        else
             root=root.getNext();
-            --size;
-        }
     }
 
     @Override
@@ -86,28 +100,65 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             System.out.println("Linked List is empty");
         else {
             if (root.getNext() == null) {
+                root = null;
+            }
+                else{
+                    NodeList<T> ptr = root,prev=root;
+                    while (ptr.getNext()!=null){
+                        prev=ptr;
+                        ptr=ptr.getNext();
+                    }
+                    prev.setNext(null);
+                }
+            }
+        }
 
-                --size;
+    @Override
+    public int getSize() {
+        size = 0;
+        NodeList<T> ptr = root;
+        while (ptr != null) {
+            size++;
+            ptr = ptr.getNext();
+        }
+        return size;
+    }
 
+    @Override
+    public void removeAtPosition(int position) {
+        int length=getSize();
+        if(position<0||position>=length)
+            System.out.println("Incorrect Position");
+        else {
+            if(root==null)
+                System.out.println("Linked List empty");
+            else if(position==0)
+                root=root.getNext();
+            else {
+                NodeList<T> ptr=root.getNext();
+                for (int i=1;i<position-1;i++){
+                    ptr=ptr.getNext();
+                }
+                ptr.setNext(ptr.getNext().getNext());
             }
         }
     }
 
     @Override
-    public void removeAtPosition(int position) {
-    --size;
-    }
-
-    @Override
     public void traverse() {
         NodeList<T> ptr=root;
-        for (int i=0;i<size;i++)
+        for (int i=0;i<getSize();i++)
             System.out.print(ptr.getData()+"->");
 
     }
 
     @Override
-    public boolean search(T data) {
-        return false;
+    public boolean search(NodeList<T> root, T data) {
+        if(root==null)
+            return false;
+        else if(root.getData()==data)
+            return true;
+        else
+           return search(root.getNext(), data);
     }
 }

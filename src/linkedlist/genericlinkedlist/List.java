@@ -1,6 +1,6 @@
 package linkedlist.genericlinkedlist;
 
-public interface List<T> {
+public interface List<T extends Comparable<T>> {
      void insertAtBegin(T data);
      void insertAtEnd(T data);
      void insertAtPosition(T data,int position);
@@ -8,5 +8,8 @@ public interface List<T> {
      void removeAtEnd();
      void removeAtPosition(int position);
      void traverse();
-     boolean search(T data);
+     boolean search(NodeList<T> root,T data);
+     NodeList<T> getRoot();
+     void display();
+     int getSize();
 }
