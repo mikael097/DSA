@@ -102,16 +102,16 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             if (root.getNext() == null) {
                 root = null;
             }
-                else{
-                    NodeList<T> ptr = root,prev=root;
-                    while (ptr.getNext()!=null){
-                        prev=ptr;
-                        ptr=ptr.getNext();
-                    }
-                    prev.setNext(null);
+            else{
+                NodeList<T> ptr = root,prev=root;
+                while (ptr.getNext()!=null){
+                    prev=ptr;
+                    ptr=ptr.getNext();
                 }
+                prev.setNext(null);
             }
         }
+    }
 
     @Override
     public int getSize() {
@@ -159,6 +159,6 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         else if(root.getData()==data)
             return true;
         else
-           return search(root.getNext(), data);
+            return search(root.getNext(), data);
     }
 }
