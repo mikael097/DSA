@@ -129,20 +129,19 @@ public class DoubleLinkedList implements Operation{
          else if(pos==length-1)
              removeAtEnd();
          else {
-             DLLNode store;
-          if(pos<=length/2){
-             DLLNode ptr=head;
+             DLLNode store,ptr;
+            if(pos<=length/2){
+                ptr = head;
              for(int i=0;i<pos;i++)
                  ptr=ptr.getNext();
-            store=ptr;
-         }
+            }
          else {
-             DLLNode ptr=tail;
+                ptr = tail;
              for(int i=length-1;i>pos;i--)
                  ptr=ptr.getPrev();
-             store=ptr;
-         }
-         DLLNode temp=store.getPrev();
+            }
+            store=ptr;
+            DLLNode temp=store.getPrev();
          temp.setNext(store.getNext());
          store.getNext().setPrev(temp);
          length--;
