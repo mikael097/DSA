@@ -101,6 +101,68 @@ public class DoubleLinkedList implements Operation{
         }
     }
 
+    @Override
+    public void removeAtBegin() {
+        if (getLength() == 0)
+            System.out.println("[-] No elements in DLL");
+        else {
+            if (getLength() == 1)
+                head = tail = null;
+
+            else {
+                head = head.getNext();
+                head.setPrev(null);
+            }
+            length--;
+
+        }
+    }
+
+    @Override
+    public void removeAtPosition(int pos) {
+        if (pos < 0 || pos >= length)
+            System.out.println("[-] Incorrect Position");
+        else if (head == null)
+            System.out.println("[-] No elements in DLL");
+        else if (pos == 0)
+                removeAtBegin();
+         else if(pos==length-1)
+             removeAtEnd();
+         else {
+             DLLNode store;
+          if(pos<=length/2){
+             DLLNode ptr=head;
+             for(int i=0;i<pos;i++)
+                 ptr=ptr.getNext();
+            store=ptr;
+         }
+         else {
+             DLLNode ptr=tail;
+             for(int i=length-1;i>pos;i--)
+                 ptr=ptr.getPrev();
+             store=ptr;
+         }
+         DLLNode temp=store.getPrev();
+         temp.setNext(store.getNext());
+         store.getNext().setPrev(temp);
+         length--;
+        }
+    }
+    @Override
+    public void removeAtEnd() {
+        if (getLength() == 0)
+            System.out.println("[-] DLL is empty.");
+        else {
+         if (getLength() == 1)
+                head = tail = null;
+            else {
+                tail = tail.getPrev();
+                tail.setNext(null);
+            }
+            length--;
+        }
+
+    }
     private DLLNode searchFromTail(int pos) {
         int length=getLength();
         DLLNode temp=tail;

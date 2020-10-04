@@ -7,4 +7,7 @@ public interface Operation {
     void displayTail();
     void insertAtEnd(int data);
     void insertAtPosition(int pos, int data);
+    void removeAtBegin();
+    void removeAtEnd();
+    void removeAtPosition(int pos);
 }

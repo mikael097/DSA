@@ -17,5 +17,13 @@ public class Run {
         obj.displayHead();
         obj.insertAtPosition(5, 90);
         obj.displayHead();
+        obj.removeAtPosition(5);
+        obj.displayHead();
+        obj.removeAtPosition(0);
+        obj.displayHead();
+        obj.removeAtPosition(1);
+        obj.displayHead();
+        obj.removeAtPosition(1);
+        obj.displayHead();
     }
 }
