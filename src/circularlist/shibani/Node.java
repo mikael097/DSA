@@ -1,8 +1,13 @@
-package circularlist;
+package circularlist.shibani;
 
-public class CLLNode {
+public class Node {
         private int data;
-        private CLLNode next;
+        private Node next;
+
+        Node(int data){
+                this.data = data;
+                next = null;
+        }
 
         public int getData() {
                 return data;
@@ -12,11 +17,11 @@ public class CLLNode {
                 this.data = data;
         }
 
-        public CLLNode getNext() {
+        public Node getNext() {
                 return next;
         }
 
-        public void setNext(CLLNode next) {
+        public void setNext(Node next) {
                 this.next = next;
         }
 }

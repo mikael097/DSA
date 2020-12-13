@@ -117,17 +117,17 @@ public class LinkedList {
         obj.display();
         obj.insertAtBegin(6);
         obj.display();
-        obj.removeAtBegin();
+      //  obj.removeAtBegin();
         obj.display();
-        obj.removeAtEnd();
+       // obj.removeAtEnd();
         obj.display();
-        obj.insertAtPosition(999, 4);
+       // obj.insertAtPosition(999, 4);
         obj.display();
-        obj.removeAtPosition(2);
+       // obj.removeAtPosition(2);
         obj.display();
-        obj.removeAtPosition(0);
+      //  obj.removeAtPosition(0);
         obj.display();
-        obj.removeAtPosition(3);
+       // obj.removeAtPosition(3);
         obj.display();
     }
 }
