@@ -38,7 +38,7 @@ public class Queue<T extends Number> extends Node<T> implements Operations<T>{
             System.out.print(ptr);
             ptr=ptr.getNext();
         }
-        System.out.println();;
+        System.out.println();
     }
 
     public static void main(String[] args) throws IOException {
