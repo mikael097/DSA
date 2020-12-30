@@ -32,7 +32,7 @@ public class Tree<T extends Number> extends Node<T> implements Operations<T>  {
     public void display(Node<T> node) {
         StringBuilder str= new StringBuilder(node.getData() + "->");
         for(Node<T> i:node.getChildren()){
-            str.append(i.getData()).append(",");
+            str.append(i.getData()).append("->");
         }
         System.out.println(str);
         for(Node<T> i:node.getChildren()){
